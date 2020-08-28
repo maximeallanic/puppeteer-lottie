@@ -78,7 +78,8 @@ module.exports = async (opts) => {
     gifskiOptions = {
       quality: 80,
       fast: false
-    }
+    },
+    firstFrame
   } = opts
 
   let {
@@ -356,7 +357,7 @@ ${inject.body || ''}
     })
   }
 
-  for (let frame = 0; frame < numFrames; ++frame) {
+  for (let frame = firstFrame || 0; frame < numFrames; ++frame) {
     const frameOutputPath = isMultiFrame
       ? sprintf(tempOutput, frame + 1)
       : tempOutput
